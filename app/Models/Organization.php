@@ -21,8 +21,20 @@ class Organization extends Model
         'email',
         'website',
         'address',
-        'region_code',
-        'status',
+        'province_code',
+        'city_code',
+        'district_code',
+        'village_code',
+        'is_active',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_active' => 'boolean',
     ];
 
     /**

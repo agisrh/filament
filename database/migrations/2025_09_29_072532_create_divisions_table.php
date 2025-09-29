@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('code', 6)->unique();
             $table->string('name', 100);
             $table->unsignedBigInteger('organization_id');
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');

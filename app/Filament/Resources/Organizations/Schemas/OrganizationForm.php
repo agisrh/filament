@@ -4,7 +4,10 @@ namespace App\Filament\Resources\Organizations\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Schema;
+use App\Helpers\IndonesiaRegionHelper;
 
 class OrganizationForm
 {
@@ -18,7 +21,7 @@ class OrganizationForm
                     ->required(),
                 TextInput::make('slug')
                     ->required(),
-                TextInput::make('logo'),
+                FileUpload::make('logo'),
                 TextInput::make('phone')
                     ->tel(),
                 TextInput::make('email')
@@ -28,9 +31,9 @@ class OrganizationForm
                     ->url(),
                 Textarea::make('address')
                     ->columnSpanFull(),
-                TextInput::make('region_code'),
-                TextInput::make('status')
-                    ->default('active'),
+                ...IndonesiaRegionHelper::completeRegionFields(),
+                Toggle::make('is_active')
+                    ->label('Active')
             ]);
     }
 }

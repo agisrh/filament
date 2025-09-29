@@ -15,12 +15,12 @@ class Division extends Model
     protected $fillable = [
         'code',
         'name',
-        'status',
+        'is_active',
         'organization_id'
     ];
 
     protected $casts = [
-        'status' => 'string'
+        'is_active' => 'boolean'
     ];
 
     public function organization(): BelongsTo

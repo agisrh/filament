@@ -77,7 +77,7 @@ class IndonesiaRegionsSeeder extends Seeder
                         'postal_code' => $matches[3] === 'NULL' ? null : trim($matches[3], "'"),
                         'latitude' => (float) $matches[4],
                         'longitude' => (float) $matches[5],
-                        'status' => 'active'
+                        'is_active' => true
                     ];
                     
                     if (count($batch) >= $batchSize) {

@@ -9,17 +9,17 @@ class CreateIndonesiaRegionsTable extends Migration
     public function up()
     {
         Schema::create('indonesia_regions', function (Blueprint $table) {
-            $table->string('code')->primary();
+            $table->string('code', 20)->primary();
             $table->string('name');
-            $table->string('postal_code')->nullable();
+            $table->string('postal_code', 6)->nullable();
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->boolean('is_active')->default(true);
 
             // Basic indexes
             $table->index('name');
             $table->index('postal_code');
-            $table->index('status');
+            $table->index('is_active');
         });
 
         // Tambahan indexes untuk optimasi query
