@@ -38,6 +38,15 @@ class Organization extends Model
     ];
 
     /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'is_active' => true,
+    ];
+
+    /**
      * Get the users for the organization.
      */
     public function users(): BelongsToMany

@@ -7,11 +7,11 @@ use App\Models\Organization;
 use Filament\Pages\Tenancy\RegisterTenant;
 use Filament\Schemas\Schema;
 
-class RegisterOrganizationResource extends RegisterTenant
+class RegisterOrganization extends RegisterTenant
 {
     public static function getLabel(): string
     {
-        return 'Register organization';
+        return 'Register Organization';
     }
 
     public function form(Schema $schema): Schema
