@@ -2,25 +2,30 @@
 
 namespace App\Filament\Resources\Divisions;
 
+
 use App\Filament\Resources\Divisions\Pages\CreateDivision;
 use App\Filament\Resources\Divisions\Pages\EditDivision;
 use App\Filament\Resources\Divisions\Pages\ListDivisions;
 use App\Filament\Resources\Divisions\Schemas\DivisionForm;
 use App\Filament\Resources\Divisions\Tables\DivisionsTable;
 use App\Models\Division;
-use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use BackedEnum;
+use UnitEnum;
 
 class DivisionResource extends Resource
 {
     protected static ?string $model = Division::class;
+    
+    protected static string | UnitEnum | null $navigationGroup = 'Manajemen';
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?int $navigationSort = 2;
+
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $recordTitleAttribute = 'name';
 

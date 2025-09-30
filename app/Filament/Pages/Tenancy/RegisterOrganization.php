@@ -2,10 +2,11 @@
 
 namespace App\Filament\Pages\Tenancy;
 
-use App\Filament\Resources\Organizations\Schemas\OrganizationForm;
+use App\Filament\Resources\Organizations\Schemas\OrganizationRegisterForm;
 use App\Models\Organization;
 use Filament\Pages\Tenancy\RegisterTenant;
 use Filament\Schemas\Schema;
+use Filament\Support\Enums\Width;
 
 class RegisterOrganization extends RegisterTenant
 {
@@ -14,9 +15,15 @@ class RegisterOrganization extends RegisterTenant
         return 'Register Organization';
     }
 
+    public function getMaxContentWidth(): Width|string|null
+    {
+        return Width::FourExtraLarge;
+    }
+
+
     public function form(Schema $schema): Schema
     {
-        return OrganizationForm::configure($schema);
+        return OrganizationRegisterForm::configure($schema);
     }
 
     protected function handleRegistration(array $data): Organization
@@ -26,5 +33,10 @@ class RegisterOrganization extends RegisterTenant
         $organization->users()->attach(auth()->user());
 
         return $organization;
+    }
+
+    protected function getFormActions(): array
+    {
+        return [];
     }
 }

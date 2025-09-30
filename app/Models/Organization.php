@@ -15,6 +15,7 @@ class Organization extends Model
     protected $fillable = [
         'code',
         'name',
+        'brand',
         'slug',
         'logo',
         'phone',
@@ -63,10 +64,34 @@ class Organization extends Model
     }
 
     /**
-     * Get the region for the organization.
+     * Get the province for the organization.
      */
-    public function region(): BelongsTo
+    public function province(): BelongsTo
     {
-        return $this->belongsTo(\Aliziodev\IndonesiaRegions\Models\IndonesiaRegion::class, 'region_code', 'code');
+        return $this->belongsTo(\Aliziodev\IndonesiaRegions\Models\IndonesiaRegion::class, 'province_code', 'code');
+    }
+
+    /**
+     * Get the city for the organization.
+     */
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(\Aliziodev\IndonesiaRegions\Models\IndonesiaRegion::class, 'city_code', 'code');
+    }
+
+    /**
+     * Get the district for the organization.
+     */
+    public function district(): BelongsTo
+    {
+        return $this->belongsTo(\Aliziodev\IndonesiaRegions\Models\IndonesiaRegion::class, 'district_code', 'code');
+    }
+
+    /**
+     * Get the village for the organization.
+     */
+    public function village(): BelongsTo
+    {
+        return $this->belongsTo(\Aliziodev\IndonesiaRegions\Models\IndonesiaRegion::class, 'village_code', 'code');
     }
 }

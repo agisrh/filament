@@ -21,6 +21,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Models\Organization;
 use App\Filament\Pages\Tenancy\RegisterOrganization;
 use Filament\Support\Enums\Width;
+use Filament\Navigation\NavigationGroup;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -36,6 +37,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
+            ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\Filament\Clusters')
             ->pages([
                 Dashboard::class,
             ])
@@ -43,6 +45,10 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
+            ])
+            ->navigationGroups([
+                NavigationGroup::make('Manajemen')
+                    ->collapsible(),
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -59,6 +65,6 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->tenant(Organization::class, slugAttribute: 'slug')
-            ->tenantRegistration(RegisterOrganization::class)->simplePageMaxContentWidth(Width::FitContent);
+            ->tenantRegistration(RegisterOrganization::class);
     }
 }

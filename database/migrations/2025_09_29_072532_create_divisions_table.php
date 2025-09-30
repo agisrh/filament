@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('divisions', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 6)->unique();
+            $table->string('code', 7)->unique();
             $table->string('name', 100);
             $table->unsignedBigInteger('organization_id');
             $table->boolean('is_active')->default(true);
